@@ -242,6 +242,39 @@ main{
 .navbar > button{
     color:rgb(142,141,137);
 }
+
+.features-section{
+    display:flex;
+    flex-direction:column;
+    padding:20px;
+    text-align:center;
+    }
+    
+    .features-section>div>p{
+    color:#e85a4f;
+    font-size:20px;
+     }
+    
+     .features-section>div>h1{
+     font-size: 40px;
+         color:gray;
+         font-weight: 600;
+     }
+    .features{
+    display:flex;
+    
+    padding:20px;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    }
+    .feature{
+    display:flex;
+    flex-direction:column;
+    padding:20px;
+    max-width:290px;
+    align-items:center;
+    justify-content:center;
+    }
 @media screen and (max-width:500px){
 
     .btn{
@@ -277,5 +310,12 @@ main{
         background-color: rgba(223, 220, 220, 0.0);
         color:grey;
         font-weight: 600;
+    }
+    .add-task>.inputs{
+        flex-direction: column;
+    }
+    .add-task{
+        margin: 1px;
+        margin-top: 10px;
     }
 }
