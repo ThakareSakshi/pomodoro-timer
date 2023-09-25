@@ -3,13 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Pomodoro Timer</title>
     <script src="https://kit.fontawesome.com/f30fac2c61.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+
+    <style>
+        /*  styles for the settings popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            color: #8E8D89;
+            background: #D4CFC9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            width: 300px;
+        }
+
+        /*  styles for the close button */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000; 
+}
+
+/*styles for the close and save buttons */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #E08476; 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.save-btn {
+    background-color: #E08476;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background-color: #d36a5f;
+}
+
+
+
+/*  input field styling */
+input[type="number"], input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Highlight input fields on focus */
+input[type="number"]:focus, input[type="text"]:focus {
+    border-color: #E08476; 
+    box-shadow: 0 0 5px rgba(224, 132, 118, 0.7);
+}
+
+
+
+
+    </style>
 
 </head>
 <body id="hero-body">
@@ -21,44 +100,61 @@
                 <a href="">Features</a>
                 <a href="">About us</a>
             </div>
-            
-                <div class="right-nav">
-                    <button class="nav-btn "><span class="material-icons">person</span>Log In</button>
-                    <button class="nav-btn"><span class="material-icons">settings</span>Setting</button>
-                </div>
-
-                <!-- <button class="btn"><span class="material-icons">analytics</span>Report</button> -->
-            
+            <div class="right-nav">
+                <button class="nav-btn "><span class="material-icons">person</span>Log In</button>
+                <button class="nav-btn" onclick="openSettings()"><span class="material-icons">settings</span>Settings</button>
+            </div>
         </nav>
 
-      <main>
-        <div class="tagline">
-            <span>Turning Dreams <br> Into the <br> <span class="checkmark">Checkmark !</span></span>
-        </div>
-        <div class="timer-block">
-           
-            <div class="timer">
+        <main>
+            <div class="tagline">
+                <span>Turning Dreams <br> Into the <br> <span class="checkmark">Checkmark !</span></span>
             </div>
-      </main>
-      <!-- <script src="./index.js"></script> -->
+            <div class="timer-block">
+                <div class="timer"></div>
+            </div>
+        </main>
     </section>
+
     <section class="tasks">
         <div>
-        <h2 class="task-tagline">Get the things done <span class="your-way">your way.</span></h2>
+            <h2 class="task-tagline">Get things done <span class="your-way">your way.</span></h2>
         </div>
         <div class="add-task">
-         <span>Tasks</span>
-        <div class="inputs">
-            <input type="text" placeholder="Add task..." id="inp">
-            <button class="Add-btn" onclick="Add()">Add</button>
+            <span>Tasks</span>
+            <div class="inputs">
+                <input type="text" placeholder="Add task..." id="inp">
+                <button class="Add-btn" onclick="Add()">Add</button>
+            </div>
+            <div class="text"></div>
         </div>
-        <div class="text">
+    </section>
+
+    <!-- Settings Popup -->
+    <div id="settingsPopup" class="popup">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closeSettings()">&#10006;</button>
+            <h2>Pomodoro Settings</h2>
+            <label for="sessionDuration">Session Duration (minutes):</label>
+            <input type="number" id="sessionDuration" min="1">
+            <br><br>
+            <label for="breakDuration">Break Duration (minutes):</label>
+            <input type="number" id="breakDuration" min="1">
+            <br><br>
+            <label for="longBreakAfter">Long Break After Interval:</label>
+            <input type="number" id="longBreakAfter" min="1">
+            <br><br> 
+            <label for="longBreakDuration">Long Break Duration (minutes):</label>
+            <input type="number" id="longBreakDuration" min="1">
+            <br><br>
+            <button class="save-btn" onclick="saveSettings()">Save</button>
+            <!-- <button onclick="closeSettings()">Close</button> -->
+            <!-- <button class="close-btn" onclick="closeSettings()">&#10006;</button> -->
 
         </div>
     </div>
-    </section>
+
     <script src="script.js"></script>
     <script src="index.js"></script>
-    
 </body>
 </html>
