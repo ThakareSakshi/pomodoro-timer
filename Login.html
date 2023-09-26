@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Login Form</title>
+    <style>
+      /* Custom CSS for Login Form */
+      body {
+        background-color: #f0f0f0; /* Background color */
+      }
+
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-body {
+        padding: 30px;
+      }
+
+      .btn-primary {
+        background-color: #e08476; /* Button color */
+        border: none;
+        color: #8e8d89;
+      }
+
+      .btn-primary:hover {
+        background-color: #c46455;
+      }
+
+      .btn-link {
+        color: #e08476;
+      }
+
+      .btn-link:hover {
+        color: #c46455;
+      }
+
+      .form-group label {
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="text-center mb-4">
+            <a href="/" class="navbar-brand">
+              <img
+                src="/images/brandlogo-white.png"
+                class="img-fluid"
+                alt="Brand Logo"
+              />
+            </a>
+            <h2>Login</h2>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="text-center mt-3 mb-3">
+                <div class="sc-cSHVUG gfNZBp">
+                  <div class="sc-kAzzGY jzyRZU"></div>
+                  <div class="sc-chPdSV gArHlO"></div>
+                  <div class="sc-kAzzGY jzyRZU"></div>
+                </div>
+              </div>
+              <form id="loginForm">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="example@mail.com"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                  Log in with Email
+                </button>
+              </form>
+              <div class="text-center mt-3">
+                <a href="reset.html" class="btn btn-link">Forgot Password</a>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-3">
+            <p>
+              Do not have an account?
+              <a href="signup.html" class="btn btn-link">Create account</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("loginForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // Send a POST request to your server for authentication
+        fetch("/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert(data.message);
+
+            // Reset the input fields
+
+            // Redirect to dashboard or appropriate page upon successful login
+            window.location.href = "/";
+          })
+          .catch((error) => console.error("Error:", error));
+      });
+      document.getElementById("email").value = "";
+      document.getElementById("password").value = "";
+    </script>
+  </body>
+</html>
