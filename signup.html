@@ -10,13 +10,22 @@
     <link rel="stylesheet" href="styles.css" />
     <!-- You can create your own CSS file for styling -->
     <title>Create Account</title>
+    <script src="https://kit.fontawesome.com/f30fac2c61.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
       /* Custom CSS for signup Form */
 body {
-  background-color: #f0f0f0; /* Background color */
+  /* background-color: #f0f0f0; Background color */
+  background-image: url("https://img.freepik.com/premium-photo/workspace-home-office-desk-supplies-office-workplace-3d-rendered_1421-4794.jpg?w=2000");
+    background-position: center;
 }
 
 .card {
+  background-color: rgba(255, 255, 255, 0.5);
   border: none;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -29,33 +38,63 @@ body {
 .btn-primary {
   background-color: #e08476; /* Button color */
   border: none;
-  color: #8e8d89; /* Text color */
+  color: white; /* Text color */
+}
+.btn-primary:hover{
+  background-color: rgba(0, 0, 0, 0.0);
+  border:1px solid rgb(224,132,118);;
+  color:rgb(224,132,118);;
 }
 
-.btn-primary:hover {
-  background-color: #c46455; /* Button color on hover */
-}
+/* .btn-primary:hover {*/
+  /* background-color: #c46455; Button color on hover */
+/* }  */
 
 .btn-link {
   color: #e08476; /* Link color */
 }
 
 .btn-link:hover {
-  color: #c46455; /* Link color on hover */
+  color: rgb(224,132,118);; /* Link color on hover */
 }
 
 .form-group label {
   color: #000; /* Label color */
 }
-
+.create-account{
+  color:rgb(224,132,118);;
+  font-size: 30px;
+  font-weight: 600;
+}
+.form-group input{
+  background-color: transparent;
+  border:none;
+  border-bottom: 2px solid #e08476;
+}
+.form-group input:focus{
+  background-color: transparent;
+  border:none;
+  border-bottom: 4px solid #e08476;
+  box-shadow: none;
+  transform: scale(1.05);
+}
+.btn-block:focus .btn-primary:focus{
+  background-color: #e08476;
+  box-shadow: none;
+}
+.btn-block:active{
+  background-color: #e08476;
+  box-shadow: none;
+}
     </style>
   </head>
   <body>
     <div class="container mt-5">
       <a href="/">
-        <img src="/images/brandlogo-white.png" class="img-fluid" />
+        <div class="left-nav" style="font-family: 'Parisienne', cursive; font-size: 30px; font-weight: 600; color:#ee645a; position:absolute; top:10px; left:30px">Timerly</div>
+        <!-- <img src="/images/brandlogo-white.png" class="img-fluid" /> -->
       </a>
-      <div class="text-center mb-3">Create Account</div>
+      <div class="text-center mb-3 create-account ">Create Account</div>
       <div class="row justify-content-center">
         <div class="col-md-6">
           <div class="card">
@@ -63,7 +102,7 @@ body {
               <div class="text-center mt-3">
                 <div class="btn-group">
                   <button class="btn btn-primary">
-                    <img src="/icons/g-logo.png" class="img-fluid" /> Signup
+                    <i class="fa-brands fa-google" style="color: #ffffff;"></i> Signup
                     with Google
                   </button>
                 </div>
@@ -79,6 +118,7 @@ body {
                   class="form-control"
                   id="fullName"
                   placeholder="John Leo"
+                  name="fullName"
                   required
                 />
               </div>
@@ -90,6 +130,7 @@ body {
                   class="form-control"
                   id="email"
                   placeholder="example@mail.com"
+                  name="email"
                   required
                 />
               </div>
@@ -100,6 +141,7 @@ body {
                   type="password"
                   class="form-control"
                   id="password"
+                  name="password"
                   placeholder="Password"
                   required
                 />
@@ -107,7 +149,7 @@ body {
               <div class="form-group">
                 <button
                   type="button"
-                  class="btn btn-primary btn-block"
+                  class="btn btn-primary btn-block mt-5"
                   id="signup-button"
                 >
                   Sign up with Email
@@ -117,7 +159,7 @@ body {
           </div>
           <div class="text-center mt-3">
             <div class="already-account">Already have an account?</div>
-            <a href="login.html" class="btn btn-link">Login</a>
+            <a href="Login.html" class="btn btn-link">Login</a>
           </div>
         </div>
       </div>
@@ -142,7 +184,7 @@ body {
             alert(data.message);
           
              // Redirect to dashboard or appropriate page upon successful login
-             window.location.href = "/login.html";
+             window.location.href = "/Login.html";
           })
           .catch((error) => console.error("Error:", error));
       });
