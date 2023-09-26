@@ -11,10 +11,11 @@ body{
 
 .hero-section{
     
-    background-image: url("https://img.freepik.com/premium-photo/workspace-home-office-desk-supplies-office-workplace-3d-rendered_1421-4794.jpg?w=2000");
+    background-image: url("https://img.freepik.com/premium-photo/workspace-home-office-desk-supplies-office-workplace-3d-rendered_1421-4794.jpg?");
     /* background-color: rgb(234,232,220); */
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     height:100vh;
     width: 100vw;
     transition:all .6s linear ;
