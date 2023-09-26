@@ -5,9 +5,12 @@
     font-family: 'Lato', sans-serif;
 }
 
-
+body{
+    overflow-x: hidden;
+}
 
 .hero-section{
+    
     background-image: url("https://img.freepik.com/premium-photo/workspace-home-office-desk-supplies-office-workplace-3d-rendered_1421-4794.jpg?w=2000");
     /* background-color: rgb(234,232,220); */
     background-position: center;
@@ -57,7 +60,7 @@
 }
 .mid-nav{
     display: flex;
-    gap:20px;
+    gap:30px;
     color:rgb(142,141,137);
     align-items: center;
     padding:10px 20px;
@@ -68,6 +71,14 @@
     color:rgb(142,141,137);
     font-size: 20px;
     font-weight: 700;
+}
+
+.mid-nav a:hover{
+    color:#e85a4f;
+    transform: scale(1.1);
+}
+.mid-nav a:focus{
+    color:#e85a4f;
 }
 
 .right-nav{
@@ -243,6 +254,13 @@ main{
     color:rgb(142,141,137);
 }
 
+.nav-btn:hover{
+    cursor: pointer;
+    color:#e98074;
+    background-color: transparent;
+    border:1px solid #e98074;
+}
+
 .features-section{
     display:flex;
     flex-direction:column;
@@ -250,7 +268,7 @@ main{
     text-align:center;
     }
     
-    .features-section>div>p{
+    .features-section>div>p,.contact-head span{
     color:#e85a4f;
     font-size:20px;
      }
@@ -262,20 +280,56 @@ main{
      }
     .features{
     display:flex;
-    
+    margin-top:20px;
     padding:20px;
     justify-content:space-around;
     flex-wrap:wrap;
     }
     .feature{
     display:flex;
+    gap:10px;
     flex-direction:column;
     padding:20px;
     max-width:290px;
     align-items:center;
     justify-content:center;
+    color:grey;
+    transition: all .3s linear;
     }
-@media screen and (max-width:500px){
+
+    .feature:hover{
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+
+#contact-section{
+    background-color: #eae7dc;
+}
+
+.contact-us, .contact-details{
+    margin-top:20px;
+    display: flex;
+    justify-content: space-around;
+    gap:20px;
+    color:grey;
+    padding:20px;
+   
+}
+.contact-details >div >p, .contact-head p{
+    margin-top:10px;
+}
+
+.contact-details p:hover,.contact-details span:hover{
+    cursor: pointer;
+    color:#e85a4f
+}
+.contact-head h1{
+    font-size:40px;
+}
+
+
+
+@media screen and (max-width:770px){
 
     .btn{
         font-size: small;
@@ -318,4 +372,12 @@ main{
         margin: 1px;
         margin-top: 10px;
     }
+    .contact-us{
+        flex-direction: column;
+    }
+    .left-nav,.right-nav button{
+        margin:1px;
+        padding: 1px;
+    }
+
 }

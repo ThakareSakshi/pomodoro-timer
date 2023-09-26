@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/f30fac2c61.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
@@ -94,11 +95,11 @@ input[type="number"]:focus, input[type="text"]:focus {
 <body id="hero-body">
     <section class="hero-section" id="hero-section">
         <nav class="navbar">
-            <div class="left-nav">Logo</div>
+            <div class="left-nav" style="font-family: 'Parisienne', cursive; font-size: 30px; font-weight: 600; color:#ee645a">Timerly</div>
             <div class="mid-nav">
-                <a href="Pomodoro">Pomodoro</a>
-                <a href="">Features</a>
-                <a href="">About us</a>
+                <a href="#hero-section">Pomodoro</a>
+                <a href="#features-section">Features</a>
+                <a href="#contact-section">Contact Us</a>
             </div>
             <div class="right-nav">
                 <button class="nav-btn "><span class="material-icons">person</span>Log In</button>
@@ -129,22 +130,26 @@ input[type="number"]:focus, input[type="text"]:focus {
             <div class="text"></div>
         </div>
     </section>
-    <section class="features-section">
+    <!--features -->
+    <section class="features-section" id="features-section">
         <div>
             <p>Features</p>
            <h1>Our Special Features</h1>
             <div class="features">
-                <div class="feature"><span class="material-icons">time</span>
+                <div class="feature">
+                    <i class="fa-solid fa-clock" style="color:#e85a4f ; font-size: 45px;"></i>
                 <h3>Flexible Time Blocking</h3>
                 <p>It allows you to structure your day and priorities while maintaining a productive schedule</p>
     
                 </div>
-                <div class="feature"><span class="material-icons">time</span>
+                <div class="feature">
+                    <i class="fa-solid fa-list-check" style="color:#e85a4f ; font-size: 45px;"></i>
                     <h3>Task Management</h3>
                     <p>Plan organize,priorities and track task to efficiently achieve Goals and maxmize productivity.</p>
     
                 </div>
-                <div class="feature"><span class="material-icons">time</span>
+                <div class="feature">
+                    <i class="fa-solid fa-calendar-days" style="color:#e85a4f; font-size: 45px;"></i>
                     <h3>Smart Routines</h3>
                     <p>have well-designed daily habits and schedules for optimze productivity, well being  and goal achievements </p>
     
@@ -156,6 +161,49 @@ input[type="number"]:focus, input[type="text"]:focus {
         </div>
     
     </section>
+
+    <!-- about US -->
+    <section id="contact-section">
+        
+        <div class="contact-us"> 
+            
+            <div class="contact-head">
+               
+                <h1>We would like to hear <br>from you</h1>
+                <p>Reach out to us if you want to become a partner or simply to have a chat</p>
+                <div>
+                    <p>Don't like a forms? send a line via email<br>timerly@gmail.com</p>
+                
+                </div>
+            </div>
+            <div class="contact-details">
+                <div>
+                    <h3>Contact Us</h3>
+
+                    <p>Our Email:</p>
+                    <span>Timerly@gmail.com</span>
+
+                    <p>Our Phone:</p>
+                    <span>+91 1024563578</span>
+
+                    <p>Our Address:</p>
+                    <span>Sambhaji nagar, Maharashtra,India</span>
+
+                </div>
+                <div>
+                    <h3>
+                    Follow us
+                </h3>
+                 <p>Linkdin</p>
+                 <p>Instagram</p>
+                 <p>Twitter</p>
+                 <p>Facebook</p>
+               </div>
+            </div>
+           <div></div>
+        </div>
+    </section>
+
 
     <!-- Settings Popup -->
     <div id="settingsPopup" class="popup">
