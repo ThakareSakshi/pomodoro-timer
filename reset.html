@@ -22,7 +22,15 @@
                         <input type="email" class="form-control" id="email" placeholder="example@mail.com">
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary btn-block">Reset Password</button>
+                        <label for="fullName">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Full Name" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" class="form-control" id="newPassword" placeholder="New Password" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary btn-block" onclick="resetPassword()">Reset Password</button>
                     </div>
                 </div>
             </div>
@@ -36,5 +44,41 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+  function resetPassword() {
+    const email = document.getElementById('email').value;
+    const fullName = document.getElementById('fullName').value;
+    const newPassword = document.getElementById('newPassword').value;
+
+    const data = {
+      email,
+      fullName,
+      newPassword
+    };
+
+    fetch('/reset-password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.text();
+      } else if (response.status === 404) {
+        throw new Error('User not found. Please check your email and full name.');
+      } else {
+        throw new Error('Error updating password.');
+      }
+    })
+    .then(data => {
+      alert(data);
+    })
+    .catch(error => {
+      alert(error.message);
+    });
+  }
+</script>
 </body>
 </html>
