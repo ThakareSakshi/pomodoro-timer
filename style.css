@@ -85,6 +85,10 @@ body{
 .right-nav{
     display: flex;
 }
+.right-nav  a{
+    text-decoration: none;
+    color:white;
+}
 main{
     /* height:100%; */
     width: 100%;
