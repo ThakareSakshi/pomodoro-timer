@@ -331,6 +331,17 @@ main{
 .contact-head h1{
     font-size:40px;
 }
+.right-nav .user-nav-btn{
+    padding:5px 10px;
+    background: transparent;
+    border:none;
+    color:#e85a4f;
+
+}
+.right-nav .user-nav-btn:hover{
+    color:white;
+
+}
 
 
 
