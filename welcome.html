@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <script src="./log.js"></script>
 
     <style>
         /*  styles for the settings popup */
@@ -102,7 +103,7 @@ input[type="number"]:focus, input[type="text"]:focus {
                 <a href="#contact-section">Contact Us</a>
             </div>
             <div class="right-nav">
-                <button href="./Login.html" class="user-nav-btn"><span class="material-icons">analytics</span></button>
+                <button href="./Login.html" class="user-nav-btn" onclick="redirectToReport()"><span class="material-icons">analytics</span></button>
               
                 <button class="user-nav-btn" onclick="openSettings()"><span class="material-icons">settings</span></button>
                 <button href="./Login.html" class="user-nav-btn"><span class="material-icons">logout</span></button>
