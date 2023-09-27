@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Your CSS file path -->
+
+    <script
+      src="https://kit.fontawesome.com/f30fac2c61.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>report</title>
+    <style>
+      /* Add any additional styles specific to this page if needed */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .summary-detail-ranking {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+      }
+
+      .focus-time-detail {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .focus-time-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .action-button {
+        background-color: #e08476;
+        border: none;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .action-button img {
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+
+      .action-button:hover {
+        background-color: transparent;
+        border: 1px solid #e08476;
+        color: #e08476;
+      }
+
+      /* .details-table {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .table-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+      }
+
+      .header-row {
+        font-weight: bold;
+      } */
+
+      .details-table {
+        display: table;
+        width: 100%;
+        border-spacing: 10px;
+      }
+
+      .table-row {
+        display: table-row;
+      }
+
+      .table-cell {
+        display: table-cell;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+
+      .header-row {
+        font-weight: bold;
+        background-color: #f0f0f0;
+      }
+
+      /* Style for the popup */
+      .popup {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .popup h2 {
+        margin-bottom: 10px;
+      }
+
+      .popup label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .popup input {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+
+      .popup button {
+        padding: 10px 20px;
+      }
+
+      /* Style for the close button */
+      .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="summary-detail-ranking">
+        <div class="summary">Details</div>
+      </div>
+      <div class="focus-time-detail">
+        <div class="focus-time-title">Focus Time Detail</div>
+        <button class="action-button" onclick="openPopup()">
+          <i class="far fa-square-plus"></i> Insert
+        </button>
+        <div class="actions">
+          <!-- <button class="action-button" onclick="openPopup()">
+            <i class="far fa-square-plus"></i> Insert
+          </button> -->
+
+          <div id="popup" class="popup">
+            <span class="popup-close" onclick="closePopup()">&times;</span>
+            <h2>Insert Details</h2>
+            <form>
+              <label for="dateInput">Date:</label>
+              <input type="date" id="dateInput" name="date" required /><br />
+
+              <label for="projectTaskInput">Task:</label>
+              <input
+                type="text"
+                id="projectTaskInput"
+                name="task"
+                required
+              /><br />
+
+              <label for="minutesInput">Minutes:</label>
+              <input
+                type="number"
+                id="minutesInput"
+                name="minutes"
+                min="0"
+                required
+              /><br />
+
+              <button type="button" onclick="displayUserDetails()">Save</button>
+            </form>
+          </div>
+
+          <div class="details-table">
+            <div class="table-row header-row">
+              <div class="table-cell">Date</div>
+              <div class="table-cell">Task</div>
+              <div class="table-cell">Minutes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <canvas id="myChart" width="400" height="200"></canvas>
+
+      <script>
+        function openPopup() {
+          const popup = document.getElementById("popup");
+          popup.style.display = "block";
+        }
+
+        function closePopup() {
+          const popup = document.getElementById("popup");
+          popup.style.display = "none";
+        }
+
+        function displayUserDetails() {
+          const date = document.getElementById("dateInput").value;
+          const task = document.getElementById("projectTaskInput").value;
+          const minutes = document.getElementById("minutesInput").value;
+
+          const table = document.querySelector(".details-table");
+
+          const row = document.createElement("div");
+          row.classList.add("table-row");
+
+          row.innerHTML = `
+    <div class="table-cell">${date}</div>
+    <div class="table-cell">${task}</div>
+    <div class="table-cell">${minutes}</div>
+  `;
+
+          table.appendChild(row);
+          closePopup(); // Close the popup after saving
+        }
+
+        function closePopup() {
+          const popup = document.getElementById("popup");
+          popup.style.display = "none";
+        }
+      </script>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="a.js"></script>
+    </div>
+  </body>
+</html>
