@@ -10,6 +10,7 @@ class Timer {
         shortB: root.querySelector(".timer__btn--short"),
         longB: root.querySelector(".timer__btn--long"),
         pomodoro: root.querySelector(".timer__btn--pomodoro"),
+        timer: root.querySelector(".timer-block")
       };
   
       this.interval = null;
@@ -33,31 +34,30 @@ class Timer {
       this.el.shortB.addEventListener("click", () => {
         this.remainingSeconds = this.settings.breakDuration;
         this.updateInterfaceTime();
-        document.getElementById("hero-section").style.backgroundColor = "rgb(247,195,152)";
+        document.body.style.backgroundColor = "rgb(57,112,151)";
+       
+        document.getElementById("timer-block").style.backgroundColor="#4D7FA2";
+        
+        
       });
   
       this.el.longB.addEventListener("click", () => {
         this.remainingSeconds = this.settings.longBreakDuration;
         this.updateInterfaceTime();
-        document.getElementById("hero-section").style.backgroundColor = "rgb(168,216,167)";
+        document.body.style.backgroundColor = "rgb(56,133,138)";
+        document.getElementById("timer-block").style.backgroundColor="rgb(76,145,150)";
+        
       });
   
       this.el.pomodoro.addEventListener("click", () => {
         this.remainingSeconds = this.settings.sessionDuration;
         this.updateInterfaceTime();
-        document.getElementById("hero-section").style.backgroundColor = "rgb(200,221,248)";
+        document.body.style.backgroundColor = "rgb(186,73,73)";
+        document.getElementById("timer-block").style.backgroundColor="rgb(193,92,92)";
+        
       });
   
-      this.el.reset.addEventListener("click", () => {
-        const inputMinutes = prompt("Enter number of minutes:");
   
-        if (inputMinutes < 60) {
-          this.stop();
-          this.settings.sessionDuration = inputMinutes * 60;
-          this.remainingSeconds = this.settings.sessionDuration;
-          this.updateInterfaceTime();
-        }
-      });
     }
   
     updateInterfaceTime() {
@@ -70,28 +70,42 @@ class Timer {
   
     updateInterfaceControls() {
       if (this.interval === null) {
-        this.el.control.innerHTML = `<span class="material-icons">play_arrow</span>`;
+        this.el.control.innerHTML = `<span >Start</span>`;
         this.el.control.classList.add("timer__btn--start");
         this.el.control.classList.remove("timer__btn--stop");
       } else {
-        this.el.control.innerHTML = `<span class="material-icons">pause</span>`;
+        this.el.control.innerHTML = `<span >pause</span>`;
         this.el.control.classList.add("timer__btn--stop");
         this.el.control.classList.remove("timer__btn--start");
       }
     }
   
     start() {
-      if (this.remainingSeconds === 0) return;
+      if (this.remainingSeconds === 0 || this.remainingSeconds<=0) {
+        alert("check time again");
+        return;
+      };
   
       this.interval = setInterval(() => {
-        this.remainingSeconds--;
+        
+        
+        // this.remainingSeconds--;
         this.updateInterfaceTime();
-  
-        if (this.remainingSeconds === 0) {
+        if (this.remainingSeconds === 0 || this.remainingSeconds<=0) {
           var audio = new Audio('./mixkit-data-scaner-2847.wav');
           audio.play();
           this.stop();
+          if (this.settings.breakDuration > 0) {
+            this.sendNotification("Take a Break", {
+              body: "It's time for a short break!",
+            });
+          } else {
+            this.sendNotification("Start a New Pomodoro", {
+              body: "Time to start a new Pomodoro session!",
+            });
+          }
         }
+        this.remainingSeconds--;
       }, 1000);
   
       this.updateInterfaceControls();
@@ -112,18 +126,18 @@ class Timer {
     </div>
       <div class="time">
       <span class="timer__part timer__part--minutes">00</span>
-      <span> Min</span>
+      
       <span class="timer__part">:</span>
       <span class="timer__part timer__part--seconds">00</span>
-      <span> Sec </span>
+      
       </div>
       <div class="timer-toggle-btn">
       <button type="button" class="timer__btn timer__btn--control timer__btn--start">
-      <span class="material-icons">play_arrow</span>
+      Start
       </button>
-      <button type="button" class="timer__btn timer__btn--reset">
+      <!-- <button type="button" class="timer__btn timer__btn--reset">
       <span class="material-icons">timer</span>
-      </button>
+      </button>-->
       </div>
     `;
     }
@@ -135,6 +149,21 @@ class Timer {
       this.settings.longBreakDuration = longBreakDuration * 60;
       this.remainingSeconds = this.settings.sessionDuration;
       this.updateInterfaceTime();
+    }
+    sendNotification(title, options) {
+      const notificationPermission = document.getElementById(
+        "notificationPermission"
+        
+      );
+  
+      if (notificationPermission.checked) {
+        if (Notification.permission === "granted") {
+          const notification = new Notification(title, options);
+          console.log("Notification displayed:", notification);
+        } else {
+          console.error("Notification permission not granted.");
+        }
+      }
     }
   }
   
